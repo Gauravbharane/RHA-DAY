@@ -33,7 +33,7 @@ sudo systemctl enable --now apache2
 
 ### 3. Create a Custom Web Page
 ```bash
-echo "<h1>Welcome to RHA Day - Hosted on Apache!</h1>" > /var/www/html/index.html
+echo "<h1>Welcome to RHA Day</h1>" > /var/www/html/index.html
 ```
 👉 Replaces the default page with your custom message.  
 
