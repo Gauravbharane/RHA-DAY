@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Netflix Premium Clone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts for premium look -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #141414;
+      --accent: #e50914;
+      --text: #fff;
+      --card-bg: #222;
+      --card-hover: #333;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.6);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+      background: var(--primary);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 3vw 1rem 3vw;
+      background: linear-gradient(90deg, #141414 70%, #222 100%);
+      box-shadow: var(--shadow);
+    }
+    .logo {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-shadow: 0 2px 8px #000a;
+    }
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    .profile {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: url('https://randomuser.me/api/portraits/men/32.jpg') center/cover;
+      border: 2px solid var(--accent);
+      box-shadow: 0 2px 8px #000a;
+    }
+    .hero {
+      padding: 3rem 3vw 2rem 3vw;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background: linear-gradient(90deg, #141414 80%, #222 100%);
+    }
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      color: #eee;
+    }
+    .hero-btn {
+      background: var(--accent);
+      color: var(--text);
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1.1rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #000a;
+      transition: background 0.2s;
+    }
+    .hero-btn:hover {
+      background: #b0060f;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1.2rem 3vw;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+    .cards-row {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding: 0 3vw 2rem 3vw;
+      scroll-behavior: smooth;
+    }
+    .movie-card {
+      min-width: 220px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      position: relative;
+    }
+    .movie-card:hover {
+      transform: scale(1.07);
+      box-shadow: 0 8px 32px #000b;
+      background: var(--card-hover);
+    }
+    .movie-thumb {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+    .movie-info {
+      padding: 1rem;
+    }
+    .movie-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .movie-meta {
+      font-size: 0.95rem;
+      color: #bbb;
+      margin-bottom: 0.5rem;
+    }
+    .movie-desc {
+      font-size: 0.95rem;
+      color: #ccc;
+      margin-bottom: 0.5rem;
+    }
+    .movie-play {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 2px 8px #000a;
+      opacity: 0.9;
+      transition: background 0.2s;
+    }
+    .movie-card:hover .movie-play {
+      background: #b0060f;
+      opacity: 1;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-title { font-size: 2rem; }
+      .movie-thumb { height: 220px; }
+      .movie-card { min-width: 160px; }
+    }
+    @media (max-width: 600px) {
+      header, .hero, .cards-row { padding-left: 1vw; padding-right: 1vw; }
+      .section-title { margin-left: 1vw; }
+      .hero-title { font-size: 1.3rem; }
+      .movie-thumb { height: 120px; }
+      .movie-card { min-width: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">NETFLIX</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">TV Shows</a>
+      <a href="#">Movies</a>
+      <a href="#">My List</a>
+    </nav>
+    <div class="profile"></div>
+  </header>
+  <section class="hero">
+    <div class="hero-title">Unlimited movies, TV shows, and more.</div>
+    <div class="hero-desc">Watch anywhere. Cancel anytime. Enjoy a premium experience with our modern Netflix clone. Explore trending titles, add to your list, and stream instantly.</div>
+    <button class="hero-btn" onclick="alert('Sign up coming soon!')">Get Started</button>
+  </section>
+  <div class="section-title">Trending Now</div>
+  <div class="cards-row" id="trending-row">
+    <!-- Movie cards will be injected here -->
+  </div>
+  <div class="section-title">Top Picks For You</div>
+  <div class="cards-row" id="top-row">
+    <!-- Movie cards will be injected here -->
+  </div>
+  <script>
+    // Sample movie data
+    const trending = [
+      {
+        title: "Extraction 2",
+        year: "2023",
+        desc: "Tyler Rake returns for another high-stakes rescue mission.",
+        img: "https://image.tmdb.org/t/p/w500/7gKI9hpEMcZUQpZtGVX93hFpyyt.jpg"
+      },
+      {
+        title: "Stranger Things",
+        year: "2016–",
+        desc: "Mystery, horror and adventure in Hawkins, Indiana.",
+        img: "https://image.tmdb.org/t/p/w500/x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg"
+      },
+      {
+        title: "The Witcher",
+        year: "2019–",
+        desc: "Geralt of Rivia, a mutated monster-hunter for hire.",
+        img: "https://image.tmdb.org/t/p/w500/zrPpUlehQaBf8YX2NrVrKK8IEpf.jpg"
+      },
+      {
+        title: "Money Heist",
+        year: "2017–2021",
+        desc: "A criminal mastermind plans the biggest heist in history.",
+        img: "https://image.tmdb.org/t/p/w500/reEMJA1uzscCbkpeRJeTT2bjqUp.jpg"
+      },
+      {
+        title: "Squid Game",
+        year: "2021–",
+        desc: "Hundreds compete in deadly games for a huge cash prize.",
+        img: "https://image.tmdb.org/t/p/w500/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg"
+      }
+    ];
+    const topPicks = [
+      {
+        title: "Breaking Bad",
+        year: "2008–2013",
+        desc: "A chemistry teacher turns to a life of crime.",
+        img: "https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg"
+      },
+      {
+        title: "Dark",
+        year: "2017–2020",
+        desc: "A family saga with a supernatural twist.",
+        img: "https://image.tmdb.org/t/p/w500/apbrbWs8M9lyOpJYU5WXrpFbk1Z.jpg"
+      },
+      {
+        title: "Narcos",
+        year: "2015–2017",
+        desc: "The rise and fall of Pablo Escobar.",
+        img: "https://image.tmdb.org/t/p/w500/rTmal9fDbwh5F0waol2hq35U4ah.jpg"
+      },
+      {
+        title: "Black Mirror",
+        year: "2011–",
+        desc: "A twisted, high-tech world where humanity's greatest innovations and darkest instincts collide.",
+        img: "https://image.tmdb.org/t/p/w500/7h5Wg8KQ1v1G0y5l2QyQ8zF2QkZ.jpg"
+      },
+      {
+        title: "You",
+        year: "2018–",
+        desc: "A dangerously charming, intensely obsessive young man goes to extreme measures.",
+        img: "https://image.tmdb.org/t/p/w500/4U7hpTK0XTQBKT5M6E0mH4uqDfz.jpg"
+      }
+    ];
+    function renderCards(rowId, movies) {
+      const row = document.getElementById(rowId);
+      row.innerHTML = movies.map(m =>
+        `<div class="movie-card">
+          <img class="movie-thumb" src="${m.img}" alt="${m.title}">
+          <div class="movie-play">&#9658;</div>
+          <div class="movie-info">
+            <div class="movie-title">${m.title}</div>
+            <div class="movie-meta">${m.year}</div>
+            <div class="movie-desc">${m.desc}</div>
+          </div>
+        </div>`
+      ).join('');
+    }
+    renderCards('trending-row', trending);
+    renderCards('top-row', topPicks);
+  </script>
+</body>
+</html>
