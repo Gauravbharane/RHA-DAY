@@ -9,10 +9,38 @@ In this workshop, we will do **two practicals**:
 ---
 
 ## ⚙️ Prerequisites
-- KodeKloud Free Labs (Ubuntu environment)  
-- Internet connection  
-- Basic Linux knowledge (commands, sudo)  
+- KodeKloud Free Labs (Ubuntu environment) 
 
+Shorten link:
+```bash
+https://t.ly/9LUBn
+```
+
+<center>OR</center> </br>
+
+Orginal Link
+ ```bash
+https://kodekloud.com/free-labs/linux/working-with-shell-ii
+```
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+---
+## 📝 Part 0: Basic Commands & Setup
+
+### 1. Shifting from Local User to Root
+```bash
+sudo -i
+```
+Type Password for our bob user is:
+```bash
+caleston123
+```
 ---
 
 ## 📝 Part 1: Hosting a Website with Apache2
@@ -40,12 +68,15 @@ sudo wget -O /var/www/html/index.html https://raw.githubusercontent.com/Gauravbh
 
 
 ### 4. Test the Website
-```bash
-curl http://localhost
-```
-<center>OR </center>\
-👉 You should see your custom HTML.  
-Open browser → `http://<your-lab-ip>`  
+<h4>Click on Three Dots</h4>
+<img src="images/img1.png">
+<h4>Click on view Port</h4>
+<img src="images/img2.png">
+<h4>Enter Port no: 80</h4>
+<img src="images/img3.png">
+<h4>👉 You should see your custom HTML. /h4> 
+<img src="images/output1.png">
+
 
 ---
 
@@ -75,17 +106,22 @@ docker run -d -p 81:80 gauravbharane1839/jumpyfly
 ---
 
 ### 3. Access the Game
+<h4>Click on Three Dots</h4>
+<img src="images/img1.png">
+<h4>Click on view Port</h4>
+<img src="images/img2.png">
+<h4>Enter Port no: 81</h4>
+<img src="images/img4.png">
+
 Open in browser:  
-```
-http://<your-lab-ip>:8080
-```
-👉 Play the **JumpyFly Game** 🎮 hosted in Docker.  
+<h4>👉 Play the <b>JumpyFly Game 🎮 </b>hosted in Docker. </h4>
+<img src="images/output2.png">
 
 ---
 
 ## ✅ Wrap-Up
 - Apache shows how to host a **basic static website**.  
-- Docker shows how to **package and deploy applications** easily (in this case, a game 🎮).  
+- Docker shows how to **deploy applications** easily (in this case, a game 🎮).  
 - This is the foundation for **DevOps & Cloud technologies**.  
 
 ---
