@@ -1,3 +1,4 @@
+<img src="images/RHA-poster.png">
 # 🚀 RHA Day Workshop – Hosting Websites & Games with Docker
 
 Welcome to **Red Hat Academy Day (RHA Day)**!  
