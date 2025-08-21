@@ -19,27 +19,31 @@ In this workshop, we will do **two practicals**:
 
 ### 1. Install Apache
 ```bash
-sudo apt install apache2  -y
+sudo apt-get update
+
+```
+```bash
+sudo apt-get install apache2 -y
 ```
 👉 Installs the Apache web server.  
 
 ### 2. Start & Enable Apache
 ```bash
 sudo systemctl start apache2
-sudo systemctl enable apache2
 ```
 👉 Ensures Apache starts now & automatically after reboot.  
 
-### 3. Create a Custom Web Page
+### 3. Download a Custom Web Page
 ```bash
-echo "<h1>Welcome to RHA Day - Hosted on Apache2!</h1>" | sudo tee /var/www/html/index.html
+sudo wget -O /var/www/html/index.html https://raw.githubusercontent.com/Gauravbharane/RHA-DAY/refs/heads/main/index.html
 ```
-👉 Replaces the default page with your custom message.  
+
 
 ### 4. Test the Website
 ```bash
 curl http://localhost
 ```
+<center>OR </center>\
 👉 You should see your custom HTML.  
 Open browser → `http://<your-lab-ip>`  
 
@@ -50,17 +54,21 @@ Open browser → `http://<your-lab-ip>`
 ### 1. Install Docker
 ```bash
 sudo apt update
-sudo apt install -y docker.io
-sudo systemctl start docker
-sudo systemctl enable docker
 ```
+```bash
+sudo apt install docker.io -y
+```
+```bash
+sudo systemctl start docker
+```
+
 👉 Installs Docker and enables it.  
 
 ---
 
 ### 2. Run the Game Container
 ```bash
-docker run -d -p 8080:80 gauravbharane1839/jumpyfly
+docker run -d -p 81:80 gauravbharane1839/jumpyfly
 ```
 👉 Runs the JumpyFly game inside a Docker container.  
 
